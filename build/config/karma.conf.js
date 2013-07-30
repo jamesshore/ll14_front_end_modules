@@ -11,7 +11,12 @@ files = [
   MOCHA,
   MOCHA_ADAPTER,
   'node_modules/expect.js/expect.js',
-  'src/**/*.js'
+	'src/vendor/*.js',
+
+	// global example
+	'src/global/html_element.js',
+	'src/global/drawing_area.js',
+	'src/global/_*_test.js'
 ];
 
 

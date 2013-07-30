@@ -23,6 +23,8 @@ In addition, all examples use JQuery and Raphael, which are located in `src/vend
 
 Each example is identical except for the module approach used. For more information about the examples, [watch the screencast](http://www.letscodejavascript.com/v3/episodes/lessons_learned/14).
 
+Note: The tests and modules in these examples are simplified for the purpose of demonstrating differences in modularity approaches. They aren't meant to be examples of good testing or design.
+
 
 Building and Testing
 --------------------
