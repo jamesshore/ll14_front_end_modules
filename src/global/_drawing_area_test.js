@@ -1,5 +1,5 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/*global describe, it, expect, example, beforeEach, mocha, wwp, $, afterEach, Raphael, jQuery */
+/*global describe, it, expect, example, beforeEach, mocha, example, $, afterEach, Raphael, jQuery */
 (function() {
 	"use strict";
 
@@ -13,7 +13,7 @@
 		beforeEach(function() {
 			drawingArea = $("<div style='height: 300px; width: 600px'></div>");
 			$(document.body).append(drawingArea);
-			paper = wwp.initializeDrawingArea(drawingArea[0]);
+			paper = example.drawingArea.initialize(drawingArea[0]);
 		});
 
 		afterEach(function() {
