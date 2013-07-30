@@ -1,5 +1,5 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/* Raphael, $ */
+/*globals Raphael */
 
 (function(global) {
 	"use strict";
@@ -36,7 +36,7 @@
 		});
 	}
 
-	var drawLine = example.drawLine = function(startX, startY, endX, endY) {
+	var drawLine = global.example.drawLine = function(startX, startY, endX, endY) {
 		paper.path("M" + startX + "," + startY + "L" + endX + "," + endY);
 	};
 
