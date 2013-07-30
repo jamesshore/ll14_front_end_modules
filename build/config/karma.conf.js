@@ -15,6 +15,7 @@ files = [
 
 	// global example
 	'src/global/html_element.js',
+	'src/global/svg_canvas.js',
 	'src/global/drawing_area.js',
 	'src/global/_*_test.js'
 ];

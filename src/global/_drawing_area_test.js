@@ -8,12 +8,12 @@
 	describe("Drawing area", function() {
 
 		var drawingArea;
-		var paper;
+		var svgCanvas;
 
 		beforeEach(function() {
 			drawingArea = $("<div style='height: 300px; width: 600px'></div>");
 			$(document.body).append(drawingArea);
-			paper = example.drawingArea.initialize(drawingArea[0]);
+			svgCanvas = example.drawingArea.initialize(drawingArea[0]);
 		});
 
 		afterEach(function() {
@@ -24,7 +24,7 @@
 			mouseDown(20, 30);
 			mouseMove(30, 300);
 
-			expect(lines(paper)).to.eql([
+			expect(lines(svgCanvas)).to.eql([
 				[20, 30, 30, 300]
 			]);
 		});
@@ -33,7 +33,7 @@
 			mouseMove(20, 30);
 			mouseMove(30, 300);
 
-			expect(lines(paper)).to.eql([]);
+			expect(lines(svgCanvas)).to.eql([]);
 		});
 
 		it("does not draw lines after mouse button is raised", function() {
@@ -42,7 +42,7 @@
 			mouseUp(30, 300);
 			mouseMove(40, 60);
 
-			expect(lines(paper)).to.eql([
+			expect(lines(svgCanvas)).to.eql([
 				[20, 30, 30, 300]
 			]);
 		});
@@ -53,13 +53,13 @@
 			mouseMove(40, 60);
 			mouseUp(30, 300);
 
-			expect(lines(paper)).to.eql([
+			expect(lines(svgCanvas)).to.eql([
 				[20, 30, 30, 300],
 				[30, 300, 40, 60]
 			]);
 		});
 
-		// Further details left as an exercise for the viewer :-)
+		// Further tests and modularization left as an exercise for the viewer :-)
 
 		function mouseDown(relativeX, relativeY, optionalElement) {
 			sendMouseEvent("mousedown", relativeX, relativeY, optionalElement);
@@ -94,52 +94,7 @@
 		}
 
 		function lines() {
-			var result = [];
-			paper.forEach(function(element) {
-				result.push(elementToLine(element));
-			});
-			return result;
+			return svgCanvas.lines();
 		}
-
-		function elementToLine(element) {
-			if (Raphael.svg) return svgPathToLine(element.node.attributes.d.value);
-			else if (Raphael.vml) return vmlPathToLine(element.node.path.value);
-			else throw new Error("Unknown Raphael engine");
-		}
-
-		function svgPathToLine(path) {
-			var pathRegex;
-
-			if (path.indexOf(",") !== -1) {
-				// Firefox, Safari, and Chrome use format "M20,30L90,60"
-				pathRegex = /M(\d+),(\d+)L(\d+),(\d+)/;
-			}
-			else {
-				// IE 9 uses format "M 20 30 L 90 60"
-				pathRegex = /M (\d+) (\d+) L (\d+) (\d+)/;
-			}
-
-			var coords = path.match(pathRegex);
-			return [
-				coords[1],
-				coords[2],
-				coords[3],
-				coords[4]
-			];
-		}
-
-		function vmlPathToLine(path) {
-			// IE 8 uses format "m432000,648000 l1944000,1296000 e"
-			var VML_MAGIC_NUMBER = 21600;
-
-			var coords = path.match(/m(\d+),(\d+) l(\d+),(\d+) e/);
-			return [
-				coords[1] / VML_MAGIC_NUMBER,
-				coords[2] / VML_MAGIC_NUMBER,
-				coords[3] / VML_MAGIC_NUMBER,
-				coords[4] / VML_MAGIC_NUMBER
-			];
-		}
-
 	});
 }());
