@@ -14,7 +14,9 @@
 
 	var fs = require("fs");
 	var shell = require("shelljs");
-	var browserify = require("browserify");
+
+	var browserify = require("browserify");   // CommonJS
+	var requirejs = require("requirejs");     // AMD
 
 	var lint = require("./build/util/lint_runner.js");
 	var karma = require("./build/util/karma_runner.js");
@@ -22,9 +24,11 @@
 	var GENERATED_DIR = "generated";
 	var VENDOR_BUILD_DIR = GENERATED_DIR + "/vendor";
 	var COMMONJS_BUILD_DIR = GENERATED_DIR + "/commonjs";
+	var AMD_BUILD_DIR = GENERATED_DIR + "/amd";
 
 	directory(VENDOR_BUILD_DIR);
 	directory(COMMONJS_BUILD_DIR);
+	directory(AMD_BUILD_DIR);
 
 	desc("Lint and test");
 	task("default", ["lint", "test"], function() {
@@ -48,7 +52,7 @@
 	}, {async: true});
 
 	desc("Build all examples");
-	task("build", ["commonjs"]);
+	task("build", ["commonjs", "amd"]);
 
 	desc("Build CommonJS example");
 	task("commonjs", ["commonjs_prod", "commonjs_test", "vendor"]);
@@ -74,6 +78,29 @@
 			if (err) fail(err);
 			fs.writeFileSync(COMMONJS_BUILD_DIR + "/_bundle_test.js", bundle);
 			complete();
+		});
+	}, {async: true});
+
+	desc("build AMD example");
+	task("amd", ["amd_prod", "vendor"]);
+
+	task("amd_dir", [AMD_BUILD_DIR], function() {
+		shell.rm("-rf", AMD_BUILD_DIR + "/*");
+		shell.cp("-R", "src/amd/*.html", AMD_BUILD_DIR);
+	});
+
+	task("amd_prod", ["amd_dir"], function() {
+		var config = {
+			baseUrl: "src/amd",
+			name: "drawing_area",
+			out: AMD_BUILD_DIR + "/drawing_area.js"
+		};
+		requirejs.optimize(config, function(manifest) {
+			console.log("AMD success", manifest);
+			complete();
+		}, function(err) {
+			console.log("AMD fail", err);
+			fail();
 		});
 	}, {async: true});
 
