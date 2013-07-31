@@ -1,11 +1,10 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/* global example */
 
 define(function(require, exports, module) {
 	"use strict";
 
 	var HtmlElement = require("html_element");
-	var SvgCanvas = example.SvgCanvas;
+	var SvgCanvas = require("svg_canvas");
 
 	exports.initialize = function(drawingAreaDiv) {
 		var drawingArea = new HtmlElement(drawingAreaDiv);

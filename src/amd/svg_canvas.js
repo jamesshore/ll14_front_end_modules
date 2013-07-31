@@ -1,12 +1,10 @@
 // Copyright (c) 2013 Titanium I.T. LLC. All rights reserved. See LICENSE.TXT for details.
 /* globals Raphael */
 
-(function(global) {
+define(function(require, exports, module) {
 	"use strict";
 
-	global.example = global.example || {};
-
-	var SvgCanvas = global.example.SvgCanvas = function(drawingAreaDiv) {
+	var SvgCanvas = module.exports = function(drawingAreaDiv) {
 		this._paper = new Raphael(drawingAreaDiv);
 	};
 
@@ -62,5 +60,4 @@
 		];
 	}
 
-
-}(this));
+});
