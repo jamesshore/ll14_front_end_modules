@@ -12,8 +12,14 @@
 		"Safari 6.0 (iOS)"
 	];
 
+	var shell = require("shelljs");
 	var lint = require("./build/util/lint_runner.js");
 	var karma = require("./build/util/karma_runner.js");
+
+	var GENERATED_DIR = "generated";
+	var COMMONJS_BUILD_DIR = GENERATED_DIR + "/client";
+
+	directory(COMMONJS_BUILD_DIR);
 
 	desc("Lint and test");
 	task("default", ["lint", "test"], function() {
@@ -27,13 +33,32 @@
 
 	desc("Lint everything");
 	task("lint", [], function () {
-		var passed = lint.validateFileList(browserFilesToLint(), browserLintOptions(), {});
+		var passed = lint.validateFileList(browserFilesToLint(), browserLintOptions(), browserGlobals());
 		if (!passed) fail("Lint failed");
 	});
 
 	desc("Test browser code");
-	task("test", function() {
+	task("test", ["build"], function() {
 		karma.runTests(REQUIRED_BROWSERS, complete, fail);
+	}, {async: true});
+
+	desc("Build all examples");
+	task("build", ["commonjs"]);
+
+	desc("Build CommonJS example");
+	task("commonjs", [COMMONJS_BUILD_DIR], function() {
+		shell.rm("-rf", COMMONJS_BUILD_DIR + "/*");
+		shell.cp("-R", "src/client/*.html", "src/client/vendor", COMMONJS_BUILD_DIR);
+
+		console.log("Bundling client files with Browserify...");
+		var b = browserify();
+		b.require("./src/client/client.js", {expose: "./client.js"} );
+		b.require("./src/client/html_element.js", {expose: "./html_element.js"} );
+		b.bundle({ debug: true }, function(err, bundle) {
+			if (err) fail(err);
+			fs.writeFileSync(COMMONJS_BUILD_DIR + "/bundle.js", bundle);
+			complete();
+		});
 	}, {async: true});
 
 	function browserFilesToLint() {
@@ -68,6 +93,24 @@
 		var options = globalLintOptions();
 		options.browser = true;
 		return options;
+	}
+
+	function browserGlobals() {
+		return {
+			// CommonJS
+			require: false,
+			module: false,
+			exports: false,
+
+			// Mocha / expect.js
+			mocha: false,
+			describe: false,
+			it: false,
+			expect: false,
+			dump: false,
+			beforeEach: false,
+			afterEach: false
+		};
 	}
 
 }());
