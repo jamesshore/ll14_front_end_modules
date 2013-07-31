@@ -124,6 +124,9 @@
 			module: false,
 			exports: false,
 
+			// AMD
+			define: false,
+
 			// Mocha / expect.js
 			mocha: false,
 			describe: false,

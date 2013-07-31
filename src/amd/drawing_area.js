@@ -1,12 +1,11 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-(function(global) {
+/* global example */
+
+define(function(require, exports, module) {
 	"use strict";
 
-	global.example = global.example || {};
-	var exports = global.example.drawingArea = {};
-
-	var HtmlElement = global.example.HtmlElement;
-	var SvgCanvas = global.example.SvgCanvas;
+	var HtmlElement = example.HtmlElement;
+	var SvgCanvas = example.SvgCanvas;
 
 	exports.initialize = function(drawingAreaDiv) {
 		var drawingArea = new HtmlElement(drawingAreaDiv);
@@ -34,4 +33,4 @@
 		});
 	}
 
-}(this));
+});
