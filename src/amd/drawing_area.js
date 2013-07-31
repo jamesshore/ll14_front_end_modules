@@ -4,7 +4,7 @@
 define(function(require, exports, module) {
 	"use strict";
 
-	var HtmlElement = example.HtmlElement;
+	var HtmlElement = require("html_element");
 	var SvgCanvas = example.SvgCanvas;
 
 	exports.initialize = function(drawingAreaDiv) {
