@@ -20,7 +20,10 @@ files = [
 	'src/global/_*_test.js',
 
 	// CommonJS example
-	'generated/commonjs/_bundle_test.js'
+	'generated/commonjs/_bundle_test.js',
+
+	// AMD example
+	'generated/amd/_drawing_area_test.js'
 ];
 
 

@@ -54,6 +54,8 @@ Some examples require building before they are run. Here's the procedure for run
 4. AMD (optimized production version): run `jake build`, then open `generated/amd/index.html`.
 4. ES6: (tbd)
 
+Note: The `jake build` target runs automatically when you run `jake` as described in the "Building and Testing" section.
+
 
 License
 -------

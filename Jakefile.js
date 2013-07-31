@@ -82,7 +82,7 @@
 	}, {async: true});
 
 	desc("build AMD example");
-	task("amd", ["amd_prod", "vendor"]);
+	task("amd", ["amd_prod", "amd_test", "vendor"]);
 
 	task("amd_dir", [AMD_BUILD_DIR], function() {
 		shell.rm("-rf", AMD_BUILD_DIR + "/*");
@@ -95,10 +95,19 @@
 			name: "drawing_area",
 			out: AMD_BUILD_DIR + "/drawing_area.js"
 		};
-		requirejs.optimize(config, function(manifest) {
-			console.log("AMD success", manifest);
-			complete();
-		}, function(err) {
+		requirejs.optimize(config, complete, function(err) {
+			console.log("AMD fail", err);
+			fail();
+		});
+	}, {async: true});
+
+	task("amd_test", ["amd_dir"], function() {
+		var config = {
+			baseUrl: "src/amd",
+			name: "_drawing_area_test",
+			out: AMD_BUILD_DIR + "/_drawing_area_test.js"
+		};
+		requirejs.optimize(config, complete, function(err) {
 			console.log("AMD fail", err);
 			fail();
 		});

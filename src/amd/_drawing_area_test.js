@@ -1,12 +1,14 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
 /* globals jQuery, $ */
 
-(function(global) {
+require(["drawing_area"], function(drawingAreaModule) {
 	"use strict";
+
+	dump("HI");
 
 	mocha.setup({ignoreLeaks: true});
 
-	var initializeDrawingArea = global.example.drawingArea.initialize;
+	var initializeDrawingArea = drawingAreaModule.initialize;
 
 	describe("Drawing area", function() {
 
@@ -100,4 +102,4 @@
 			return svgCanvas.lines();
 		}
 	});
-}(this));
+});
