@@ -17,7 +17,10 @@ files = [
 	'src/global/html_element.js',
 	'src/global/svg_canvas.js',
 	'src/global/drawing_area.js',
-	'src/global/_*_test.js'
+	'src/global/_*_test.js',
+
+	// CommonJS example
+	'generated/commonjs/_bundle_test.js'
 ];
 
 
