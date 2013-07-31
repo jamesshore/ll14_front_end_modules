@@ -1,12 +1,10 @@
 // Copyright (c) 2013 Titanium I.T. LLC. All rights reserved. See LICENSE.TXT for details.
 /* globals $ */
 
-(function(global) {
+(function() {
 	"use strict";
 
-	global.example = global.example || {};
-
-	var HtmlElement = global.example.HtmlElement = function HtmlElement(domElement) {
+	var HtmlElement = exports.HtmlElement = function HtmlElement(domElement) {
 		this._$element = $(domElement);
 	};
 
@@ -40,4 +38,4 @@
 		};
 	}
 
-}(this));
+}());

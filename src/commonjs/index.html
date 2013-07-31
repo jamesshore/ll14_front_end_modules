@@ -20,7 +20,8 @@
 
     <script type="text/javascript">
         $(function() {
-            example.drawingArea.initialize(($("#drawingArea")[0]));
+            var drawingArea = require("./drawing_area.js");
+            drawingArea.initialize(($("#drawingArea")[0]));
         });
     </script>
 

@@ -1,5 +1,6 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/*global describe, it, expect, example, beforeEach, mocha, example, $, afterEach, Raphael, jQuery */
+/* globals jQuery, $ */
+
 (function(global) {
 	"use strict";
 

@@ -1,9 +1,12 @@
 // Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
-/*global describe, it, expect, example, beforeEach, mocha, example, $, afterEach, Raphael, jQuery */
+/* globals jQuery, $ */
+
 (function() {
 	"use strict";
 
 	mocha.setup({ignoreLeaks: true});
+
+	var initializeDrawingArea = require("./drawing_area.js").initialize;
 
 	describe("Drawing area", function() {
 
@@ -13,7 +16,7 @@
 		beforeEach(function() {
 			drawingArea = $("<div style='height: 300px; width: 600px'></div>");
 			$(document.body).append(drawingArea);
-			svgCanvas = example.drawingArea.initialize(drawingArea[0]);
+			svgCanvas = initializeDrawingArea(drawingArea[0]);
 		});
 
 		afterEach(function() {
