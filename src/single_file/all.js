@@ -1,14 +1,12 @@
-// Copyright (c) 2012 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
+// Copyright (c) 2013 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
 (function(global) {
 	"use strict";
 
-	global.example = global.example || {};
-	var exports = global.example.drawingArea = {};
+	/*
+	 * DRAWING AREA
+	 */
 
-	var HtmlElement = global.example.HtmlElement;
-	var SvgCanvas = global.example.SvgCanvas;
-
-	exports.initialize = function(drawingAreaDiv) {
+	global.initializeDrawingArea = function(drawingAreaDiv) {
 		var drawingArea = new HtmlElement(drawingAreaDiv);
 		var canvas = new SvgCanvas(drawingAreaDiv);
 
@@ -35,7 +33,11 @@
 	}
 
 
-	var HtmlElement = global.example.HtmlElement = function HtmlElement(domElement) {
+	/*
+	 * HTML ELEMENT
+	 */
+
+	function HtmlElement(domElement) {
 		this._$element = $(domElement);
 	};
 
@@ -70,7 +72,11 @@
 	}
 
 
-	var SvgCanvas = global.example.SvgCanvas = function(drawingAreaDiv) {
+	/*
+	 * SVG CANVAS
+	 */
+
+	function SvgCanvas(drawingAreaDiv) {
 		this._paper = new Raphael(drawingAreaDiv);
 	};
 
