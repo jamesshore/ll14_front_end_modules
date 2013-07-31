@@ -50,7 +50,8 @@ Some examples require building before they are run. Here's the procedure for run
 
 1. Namespaced global: open `src/global/index.html`.
 2. CommonJS modules: run `jake build`, then open `generated/commonjs/index.html`.
-3. AMD: (tbd)
+3. AMD (development version): open `src/amd/index.html`.
+4. AMD (optimized production version): run `jake build`, then open `generated/amd/index.html`.
 4. ES6: (tbd)
 
 
