@@ -4,7 +4,7 @@
 (function() {
 	"use strict";
 
-	var SvgCanvas = exports.SvgCanvas = function(drawingAreaDiv) {
+	var SvgCanvas = module.exports = function(drawingAreaDiv) {
 		this._paper = new Raphael(drawingAreaDiv);
 	};
 

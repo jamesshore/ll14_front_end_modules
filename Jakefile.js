@@ -12,13 +12,18 @@
 		"Safari 6.0 (iOS)"
 	];
 
+	var fs = require("fs");
 	var shell = require("shelljs");
+	var browserify = require("browserify");
+
 	var lint = require("./build/util/lint_runner.js");
 	var karma = require("./build/util/karma_runner.js");
 
 	var GENERATED_DIR = "generated";
-	var COMMONJS_BUILD_DIR = GENERATED_DIR + "/client";
+	var VENDOR_BUILD_DIR = GENERATED_DIR + "/vendor";
+	var COMMONJS_BUILD_DIR = GENERATED_DIR + "/commonjs";
 
+	directory(VENDOR_BUILD_DIR);
 	directory(COMMONJS_BUILD_DIR);
 
 	desc("Lint and test");
@@ -46,20 +51,25 @@
 	task("build", ["commonjs"]);
 
 	desc("Build CommonJS example");
-	task("commonjs", [COMMONJS_BUILD_DIR], function() {
+	task("commonjs", [COMMONJS_BUILD_DIR, "vendor"], function() {
 		shell.rm("-rf", COMMONJS_BUILD_DIR + "/*");
-		shell.cp("-R", "src/client/*.html", "src/client/vendor", COMMONJS_BUILD_DIR);
+		shell.cp("-R", "src/commonjs/*.html", COMMONJS_BUILD_DIR);
 
-		console.log("Bundling client files with Browserify...");
+		console.log("Bundling CommonJS files with Browserify...");
 		var b = browserify();
-		b.require("./src/client/client.js", {expose: "./client.js"} );
-		b.require("./src/client/html_element.js", {expose: "./html_element.js"} );
+		b.require("./src/commonjs/drawing_area.js", {expose: "./drawing_area.js"} );
 		b.bundle({ debug: true }, function(err, bundle) {
 			if (err) fail(err);
 			fs.writeFileSync(COMMONJS_BUILD_DIR + "/bundle.js", bundle);
 			complete();
 		});
 	}, {async: true});
+
+	desc("Build vendor files");
+	task("vendor", [VENDOR_BUILD_DIR], function() {
+		shell.rm("-rf", VENDOR_BUILD_DIR + "/*");
+		shell.cp("-R", "src/vendor/*", VENDOR_BUILD_DIR);
+	});
 
 	function browserFilesToLint() {
 		var files = new jake.FileList();

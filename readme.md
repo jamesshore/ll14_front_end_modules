@@ -46,7 +46,12 @@ To build (and test):
 Manual Testing
 --------------
 
-To see each example run, open `index.html` in the appropriate `src` subdirectory.
+Some examples require building before they are run. Here's the procedure for running each example manually:
+
+1. Namespaced global: open `src/global/index.html`.
+2. CommonJS modules: run `jake build`, then open `generated/commonjs/index.html`.
+3. AMD: (tbd)
+4. ES6: (tbd)
 
 
 License

@@ -4,7 +4,7 @@
 (function() {
 	"use strict";
 
-	var HtmlElement = exports.HtmlElement = function HtmlElement(domElement) {
+	var HtmlElement = module.exports = function HtmlElement(domElement) {
 		this._$element = $(domElement);
 	};
 
