@@ -1,4 +1,6 @@
 // Copyright (c) 2013 Titanium I.T. LLC. All rights reserved. See LICENSE.txt for details.
+/* global $, Raphael */
+
 (function(global) {
 	"use strict";
 
@@ -39,7 +41,7 @@
 
 	function HtmlElement(domElement) {
 		this._$element = $(domElement);
-	};
+	}
 
 	HtmlElement.prototype.onMouseDown = function(callback) {
 		var $element = this._$element;
@@ -78,7 +80,7 @@
 
 	function SvgCanvas(drawingAreaDiv) {
 		this._paper = new Raphael(drawingAreaDiv);
-	};
+	}
 
 	SvgCanvas.prototype.drawLine = function(startX, startY, endX, endY) {
 		this._paper.path("M" + startX + "," + startY + "L" + endX + "," + endY);
