@@ -8,7 +8,7 @@ The source code in this repository demonstrates several different approaches to 
 The repository contains several examples:
 
 1. Baseline, non-modularized code (in `src/single_file`)
-2. Namespaced global (in `src/global`)
+2. Namespace object (in `src/namespace`)
 3. CommonJS modules (in `src/commonjs`)
 4. AMD: Asynchronous Module Definition (in `src/amd`)
 5. EcmaScript 6 modules (in `src/es6`)
@@ -50,7 +50,7 @@ Manual Testing
 Some examples require building before they are run. Here's the procedure for running each example manually:
 
 1. Baseline, non-modularized: open `src/single_file/index.html`
-2. Namespaced global: open `src/global/index.html`.
+2. Namespace object: open `src/namespace/index.html`.
 3. CommonJS modules: run `jake build`, then open `generated/commonjs/index.html`.
 4. AMD (development version): open `src/amd/index.html`.
 5. AMD (optimized production version): run `jake build`, then open `generated/amd/index.html`.
