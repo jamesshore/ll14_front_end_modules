@@ -13,11 +13,11 @@ files = [
   'node_modules/expect.js/expect.js',
 	'src/vendor/*.js',
 
-	// global example
-	'src/global/html_element.js',
-	'src/global/svg_canvas.js',
-	'src/global/drawing_area.js',
-	'src/global/_*_test.js',
+	// Namespace Object example
+	'src/namespace/html_element.js',
+	'src/namespace/svg_canvas.js',
+	'src/namespace/drawing_area.js',
+	'src/namespace/_*_test.js',
 
 	// CommonJS example
 	'generated/commonjs/_bundle_test.js',
