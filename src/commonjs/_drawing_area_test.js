@@ -6,7 +6,7 @@
 
 	mocha.setup({ignoreLeaks: true});
 
-	var initializeDrawingArea = require("./drawing_area.js").initialize;
+	var initializeDrawingArea = require("./drawing_area").initialize;
 
 	describe("Drawing area", function() {
 

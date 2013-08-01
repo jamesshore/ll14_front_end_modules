@@ -5,14 +5,15 @@ This repository contains the sample source code the titular [Lessons Learned epi
 
 The source code in this repository demonstrates several different approaches to handling modularity in front-end JavaScript. The application itself is a simple drawing tool borrowed from [Lessons Learned #11](http://www.letscodejavascript.com/v3/episodes/lessons_learned/11).
 
-The repository contains four separate examples:
+The repository contains several examples:
 
-1. Namespaced global (in `src/global`)
-2. CommonJS modules (in `src/commonjs`)
-3. AMD: Asynchronous Module Definition (in `src/amd`)
-4. EcmaScript 6 modules (in `src/es6`)
+1. Baseline, non-modularized code (in `src/single_file`)
+2. Namespaced global (in `src/global`)
+3. CommonJS modules (in `src/commonjs`)
+4. AMD: Asynchronous Module Definition (in `src/amd`)
+5. EcmaScript 6 modules (in `src/es6`)
 
-Each example contains the following files:
+Each example (except `single_file`) contains the following files:
 
 * `index.html`: Load this file to run the example.
 * `drawing_area.js`: Sets up drawing area and translates events into actions
@@ -48,11 +49,12 @@ Manual Testing
 
 Some examples require building before they are run. Here's the procedure for running each example manually:
 
-1. Namespaced global: open `src/global/index.html`.
-2. CommonJS modules: run `jake build`, then open `generated/commonjs/index.html`.
-3. AMD (development version): open `src/amd/index.html`.
-4. AMD (optimized production version): run `jake build`, then open `generated/amd/index.html`.
-4. ES6: (tbd)
+1. Baseline, non-modularized: open `src/single_file/index.html`
+2. Namespaced global: open `src/global/index.html`.
+3. CommonJS modules: run `jake build`, then open `generated/commonjs/index.html`.
+4. AMD (development version): open `src/amd/index.html`.
+5. AMD (optimized production version): run `jake build`, then open `generated/amd/index.html`.
+6. ES6: (tbd)
 
 Note: The `jake build` target runs automatically when you run `jake` as described in the "Building and Testing" section.
 

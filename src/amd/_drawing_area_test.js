@@ -4,8 +4,6 @@
 require(["drawing_area"], function(drawingAreaModule) {
 	"use strict";
 
-	dump("HI");
-
 	mocha.setup({ignoreLeaks: true});
 
 	var initializeDrawingArea = drawingAreaModule.initialize;

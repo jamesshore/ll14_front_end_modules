@@ -2,8 +2,8 @@
 (function() {
 	"use strict";
 
-	var HtmlElement = require("./html_element.js");
-	var SvgCanvas = require("./svg_canvas.js");
+	var HtmlElement = require("./html_element");
+	var SvgCanvas = require("./svg_canvas");
 
 	exports.initialize = function(drawingAreaDiv) {
 		var drawingArea = new HtmlElement(drawingAreaDiv);
