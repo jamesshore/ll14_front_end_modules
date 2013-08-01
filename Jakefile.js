@@ -121,10 +121,8 @@
 
 	function browserFilesToLint() {
 		var files = new jake.FileList();
-		files.include("src/global/*.js");
-		files.include("src/commonjs/*.js");
-		files.include("src/amd/*.js");
-		files.include("src/es6/*.js");
+		files.include("src/**/*.js");
+		files.exclude("src/vendor/*.js");
 		return files.toArray();
 	}
 

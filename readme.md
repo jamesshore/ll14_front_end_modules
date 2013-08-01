@@ -1,4 +1,4 @@
-Front-End Modules: AMD, CommonJS, and ES6
+Front-End Modules: Namespaces, AMD, and CommonJS
 =============
 
 This repository contains the sample source code the titular [Lessons Learned episode](http://www.letscodejavascript.com/v3/episodes/lessons_learned/14) of James Shore's [Let's Code: Test-Driven JavaScript](http://www.letscodejavascript.com) screencast. Let's Code: Test-Driven JavaScript is a screencast series focused on rigorous, professional JavaScript development.
@@ -11,7 +11,6 @@ The repository contains several examples:
 2. Namespace object (in `src/namespace`)
 3. CommonJS modules (in `src/commonjs`)
 4. AMD: Asynchronous Module Definition (in `src/amd`)
-5. EcmaScript 6 modules (in `src/es6`)
 
 Each example (except `single_file`) contains the following files:
 
@@ -54,7 +53,6 @@ Some examples require building before they are run. Here's the procedure for run
 3. CommonJS modules: run `jake build`, then open `generated/commonjs/index.html`.
 4. AMD (development version): open `src/amd/index.html`.
 5. AMD (optimized production version): run `jake build`, then open `generated/amd/index.html`.
-6. ES6: (tbd)
 
 Note: The `jake build` target runs automatically when you run `jake` as described in the "Building and Testing" section.
 
