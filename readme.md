@@ -1,7 +1,7 @@
 Front-End Modules: Namespaces, AMD, and CommonJS
 =============
 
-This repository contains the sample source code the titular [Lessons Learned episode](http://www.letscodejavascript.com/v3/episodes/lessons_learned/14) of James Shore's [Let's Code: Test-Driven JavaScript](http://www.letscodejavascript.com) screencast. Let's Code: Test-Driven JavaScript is a screencast series focused on rigorous, professional JavaScript development.
+This repository contains the sample source code for the titular [Lessons Learned episode](http://www.letscodejavascript.com/v3/episodes/lessons_learned/14) of James Shore's [Let's Code: Test-Driven JavaScript](http://www.letscodejavascript.com) screencast. Let's Code: Test-Driven JavaScript is a screencast series focused on rigorous, professional JavaScript development.
 
 The source code in this repository demonstrates several different approaches to handling modularity in front-end JavaScript. The application itself is a simple drawing tool borrowed from [Lessons Learned #11](http://www.letscodejavascript.com/v3/episodes/lessons_learned/11).
 
@@ -10,7 +10,7 @@ The repository contains several examples:
 1. Baseline, non-modularized code (in `src/single_file`)
 2. Namespace object (in `src/namespace`)
 3. CommonJS modules (in `src/commonjs`)
-4. AMD: Asynchronous Module Definition (in `src/amd`)
+4. AMD (in `src/amd`)
 
 Each example (except `single_file`) contains the following files:
 
@@ -48,13 +48,13 @@ Manual Testing
 
 Some examples require building before they are run. Here's the procedure for running each example manually:
 
-1. Baseline, non-modularized: open `src/single_file/index.html`
+1. Baseline (non-modularized): open `src/single_file/index.html`
 2. Namespace object: open `src/namespace/index.html`.
 3. CommonJS modules: run `jake build`, then open `generated/commonjs/index.html`.
 4. AMD (development version): open `src/amd/index.html`.
 5. AMD (optimized production version): run `jake build`, then open `generated/amd/index.html`.
 
-Note: The `jake build` target runs automatically when you run `jake` as described in the "Building and Testing" section.
+Note: The `jake build` target is part of the default `jake` run.
 
 
 License
