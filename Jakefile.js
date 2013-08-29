@@ -64,7 +64,7 @@
 
 	task("commonjs_prod", ["commonjs_dir"], function() {
 		var b = browserify();
-		b.require("./src/commonjs/drawing_area.js", {expose: "./drawing_area.js"} );
+		b.require("./src/commonjs/drawing_area.js", {expose: "./drawing_area"} );
 		b.bundle({ debug: true }, function(err, bundle) {
 			if (err) fail(err);
 			fs.writeFileSync(COMMONJS_BUILD_DIR + "/bundle.js", bundle);
